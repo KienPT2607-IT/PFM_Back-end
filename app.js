@@ -7,12 +7,13 @@ var logger = require("morgan");
 //1A. import library
 var mongoose = require("mongoose");
 
+// Define router path
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
 var app = express();
 
-//1B. set mongodb connection string
+// * 1B. set mongodb connection string
 //Note 1: "pfm" is database name
 var database = "mongodb://localhost:27017/pfm";
 mongoose
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// * Declare URL of router
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
